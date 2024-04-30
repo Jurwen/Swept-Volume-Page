@@ -80,6 +80,8 @@ body {
 
 .author-block {
   display: inline-block;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .publication-banner img {
@@ -115,7 +117,8 @@ body {
 }
 
 .results-carousel .item {
-  margin: 5px;
+  margin-left: 200px;
+  margin-right: 200px;
   overflow: hidden;
   padding: 20px;
   font-size: 0;
