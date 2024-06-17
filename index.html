@@ -2,26 +2,24 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
-  <!-- Replace the content tag with appropriate information -->
-  <meta name="description" content="DESCRIPTION META TAG">
+  <meta name="description" content="SIGGRAPH 2024 Paper">
   <meta property="og:title" content="Grid generation for discretizing implicit complexes"/>
-  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
-  <meta property="og:url" content="URL OF THE WEBSITE"/>
+  <meta property="og:description" content="An adaptive refinement method that discretizes multiple implicit functions"/>
+  <meta property="og:url" content="https://jurwen.github.io/Adaptive-grid-for-implicit-complexes/"/>
   <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
   <meta property="og:image" content="static/image/your_banner_image.png" />
   <meta property="og:image:width" content="1200"/>
   <meta property="og:image:height" content="630"/>
 
 
-  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
-  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
-  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
-  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <!-- Keywords for your paper to be indexed by-->
-  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">-->
+<!--  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">-->
+<!--  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+<!--  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">-->
+<!--  <meta name="twitter:card" content="summary_large_image">-->
+<!--  <!-- Keywords for your paper to be indexed by-->
+<!--  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">-->
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1">-->
 
 
   <title>Adaptive Grid Generation for Discretizing Implicit Complexes</title>
@@ -70,7 +68,6 @@
 
                   <div class="is-size-5 publication-authors">
                     <span class="author-block">Washington University in Saint Louis<br>Adobe Research<br>ACM Transactions on Graphics (Proc. SIGGRAPH 2024)</span>
-<!--                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>-->
                   </div>
 
                   <div class="column has-text-centered">
@@ -167,35 +164,46 @@
         <!-- Your image here -->
         <img src="static/images/fig-torus-cylinder.png" alt="MY ALT TEXT"/>
         <h2 class="subtitle has-text-centered">
-          First image description.
+            A CSG shape defined by subtracting three cylinders from a torus,
+            discretized on a grid that is adapted to both the surfaces and their intersection curves (a) or adapted only to surfaces (b).
         </h2>
       </div>
       <div class="item">
         <!-- Your image here -->
         <img src="static/images/fig-tori-rand.png" alt="MY ALT TEXT"/>
         <h2 class="subtitle has-text-centered">
-          Second image description.
+            A CSG shape defined by random subtraction and addition of
+            20 tori, discretized on a grid that is adapted to both the surfaces and their
+            intersection curves (a) or adapted only to surfaces (b).
         </h2>
       </div>
       <div class="item">
         <!-- Your image here -->
         <img src="static/images/fig-key.png" alt="MY ALT TEXT"/>
         <h2 class="subtitle has-text-centered">
-         Third image description.
+            Comparing the implicit surface of an SDF extracted on our adaptively
+            refined grid (𝜖 = 0.0005) and on a uniform tetrahedral grid (tessellation
+            of a 1003 cubic grid). The SDF is created by Shadertoy user Flopine [2020],
+            released under CC BY-NC-SA 3.0 License.
        </h2>
      </div>
      <div class="item">
       <!-- Your image here -->
       <img src="static/images/fig-uniform.png" alt="MY ALT TEXT"/>
       <h2 class="subtitle has-text-centered">
-        Fourth image description.
+          Comparing the implicit surfaces of a Hermite RBF function with
+          1000 sites (left) extracted on a uniform tetrahedral grid (tessellation of a
+          1003 cubic grid) and on our adaptively refined grid (𝜖 = 0.00125).
       </h2>
     </div>
      <div class="item">
       <!-- Your image here -->
       <img src="static/images/fig-doghead.png" alt="MY ALT TEXT"/>
       <h2 class="subtitle has-text-centered">
-        Fifth image description.
+          The result of subtraction (a) or addition (b) between two
+          slightly shifted dog head surfaces (each defined by an Hermite RBF function),
+          discretized on our adaptively refined grid. (c,d): Comparing discretizations
+          with or without adaptive refinement for the intersection curves.
       </h2>
     </div>
   </div>
@@ -226,7 +234,18 @@
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>BibTex Code Here</code></pre>
+      <pre><code>@article{Ju2024Gridgen,
+          title={Adaptive grid generation for discretizing implicit complexes},
+          author={Ju, Yiwen and Du, Xingyi and Zhou, Qingnan and Carr, Nathan and Ju, Tao},
+          journal={ACM Transactions on Graphics},
+          volume={43},
+          number={4},
+          pages={Article 82},
+          year={2024},
+          month={July},
+          publisher={ACM},
+          doi={10.1145/3658215}
+        }
     </div>
 </section>
 <!--End BibTex citation -->
