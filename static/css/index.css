@@ -46,7 +46,8 @@ body {
 
 .publication-header { position: static; top: auto; z-index: auto; background: transparent; }
 .overlay-title { position: fixed; top: 0; left: 0; right: 0; height: 35vh; z-index: 2; display: flex; align-items: flex-end; background: transparent; }
-.overlay-title .hero-body { width: 100%; padding-top: 0; padding-bottom: 1.5rem; }
+.overlay-title { overflow: hidden; }
+.overlay-title .hero-body { width: 100%; padding-top: 0; padding-bottom: 1.5rem; display: flex; align-items: flex-end; }
 .publication-header .hero-body { padding-top: 1.5rem; padding-bottom: 1.5rem; }
 
 .publication-title {
@@ -149,8 +150,8 @@ body {
 .canvas-container { margin-top: 0; }
 
 /* Second title shown inside canvas wrapper after sequence finished */
-.flow-title-in-canvas { position: absolute; top: -35vh; left: 0; right: 0; height: 35vh; z-index: 2; display: none; align-items: flex-end; background: transparent; }
-.flow-title-in-canvas .hero-body { width: 100%; padding-top: 0; padding-bottom: 1.5rem; }
+.flow-title-in-canvas { position: absolute; top: -35vh; left: 0; right: 0; height: 35vh; z-index: 2; display: none; align-items: flex-end; background: transparent; overflow: hidden; }
+.flow-title-in-canvas .hero-body { width: 100%; padding-top: 1.5rem; padding-bottom: 0; display: flex; align-items: flex-end; }
 
 /* Mobile-safe viewport sizing using svh where supported */
 @supports (height: 100svh) {
@@ -159,13 +160,39 @@ body {
   .flow-title-in-canvas { height: 35svh; top: -35svh; }
 }
 
+/* Prefer dvh when supported (best handling of dynamic UI on mobile) */
+@supports (height: 100dvh) {
+  .overlay-title { height: 35dvh; }
+  .csc { top: 35dvh; height: 65dvh; }
+  .flow-title-in-canvas { height: 35dvh; top: -35dvh; }
+}
+
 /* WebKit sticky fallback for iOS */
 .csc { position: sticky; position: -webkit-sticky; }
 
 /* Small-screen adjustments */
 @media (max-width: 600px) {
-  .publication-title { font-size: 1.6rem; }
-  .publication-authors { font-size: 0.95rem; }
+  .publication-title { font-size: 1.6rem; line-height: 1.2; }
+  .publication-authors { font-size: 0.95rem; line-height: 1.3; }
   .publication-links .button { width: 100%; }
+  .author-block { margin-left: 8px; margin-right: 8px; display: inline; }
+}
+
+/* Robust typography to prevent breaking/overflow across devices */
+.publication-title { 
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  line-height: 1.15;
+  margin-bottom: 0.5rem;
+  word-break: normal;
+  overflow-wrap: break-word;
+  hyphens: none;
+}
+
+.publication-authors {
+  font-size: clamp(1rem, 2.8vw, 1.25rem);
+  line-height: 1.3;
+  word-break: normal;
+  overflow-wrap: break-word;
+  hyphens: none;
 }
 .flow-title-in-canvas .hero-body { width: 100%; padding-top: 0; padding-bottom: 1.5rem; }
