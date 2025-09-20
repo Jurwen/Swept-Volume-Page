@@ -44,8 +44,10 @@ body {
   object-fit: fit;
 }
 
-.publication-header .hero-body {
-}
+.publication-header { position: static; top: auto; z-index: auto; background: transparent; }
+.overlay-title { position: fixed; top: 0; left: 0; right: 0; height: 35vh; z-index: 2; display: flex; align-items: flex-end; background: transparent; }
+.overlay-title .hero-body { width: 100%; padding-top: 0; padding-bottom: 1.5rem; }
+.publication-header .hero-body { padding-top: 1.5rem; padding-bottom: 1.5rem; }
 
 .publication-title {
     font-family: 'Google Sans', sans-serif;
@@ -138,3 +140,15 @@ body {
 
 
 
+
+.csc { height: 65vh; width: 100%; position: sticky; top: 35vh; display: flex; align-items: center; justify-content: center; z-index: 1; }
+
+.csc-canvas { display: block; max-width: 100%; max-height: 100%; object-fit: contain; }
+
+/* Spacer so the sticky header doesn't overlap the canvas start */
+.canvas-container { margin-top: 0; }
+
+/* Second title shown inside canvas wrapper after sequence finished */
+.flow-title-in-canvas { position: absolute; top: -35vh; left: 0; right: 0; height: 35vh; z-index: 2; display: none; align-items: flex-end; background: transparent; }
+.flow-title-in-canvas .hero-body { width: 100%; padding-top: 0; padding-bottom: 1.5rem; }
+.flow-title-in-canvas .hero-body { width: 100%; padding-top: 0; padding-bottom: 1.5rem; }
