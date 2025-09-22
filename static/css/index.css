@@ -155,21 +155,21 @@ body {
 .canvas-container { min-height: 65vh; }
 
 /* Second title shown inside canvas wrapper after sequence finished */
-.flow-title-in-canvas { position: absolute; top: -35vh; left: 0; right: 0; height: 35vh; z-index: 100002 !important; display: none; align-items: flex-end; background: transparent; overflow: hidden; pointer-events: auto; }
+.flow-title-in-canvas { position: absolute; top: -35vh; left: 0; right: 0; height: auto; z-index: 100002 !important; display: none; align-items: flex-end; background: transparent; overflow: visible; pointer-events: auto; }
 .flow-title-in-canvas .hero-body { width: 100%; padding-top: 1.5rem; padding-bottom: 0; display: flex; align-items: flex-end; position: relative; z-index: 10002; }
 
 /* Mobile-safe viewport sizing using svh where supported */
 @supports (height: 100svh) {
   .overlay-title { height: 35svh; }
   .csc { top: 35svh; height: 65svh; }
-  .flow-title-in-canvas { height: 35svh; top: -35svh; }
+  .flow-title-in-canvas { height: auto; top: -35svh; }
 }
 
 /* Prefer dvh when supported (best handling of dynamic UI on mobile) */
 @supports (height: 100dvh) {
   .overlay-title { height: 35dvh; }
   .csc { top: 35dvh; height: 65dvh; }
-  .flow-title-in-canvas { height: 35dvh; top: -35dvh; }
+  .flow-title-in-canvas { height: auto; top: -35dvh; }
 }
 
 /* WebKit sticky fallback for iOS */
