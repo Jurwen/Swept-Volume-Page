@@ -370,8 +370,12 @@
         reset(inCanvasTitle);
         return;
       }
+      // Fit only the overlay title to the 35vh band; keep the second title unscaled
       fitTitleSection(overlayTitle);
-      fitTitleSection(inCanvasTitle);
+      if (inCanvasTitle) {
+        const content = inCanvasTitle.querySelector('.has-text-centered');
+        if (content) content.style.transform = '';
+      }
     }
 
     window.addEventListener('resize', () => {
@@ -406,7 +410,8 @@
             flowInCanvas.style.display = 'flex';
           }
           // Re-fit after inserting
-          fitTitleSection(flowInCanvas);
+          const content = flowInCanvas.querySelector('.has-text-centered');
+          if (content) content.style.transform = '';
         }
       } else {
         if (flowInCanvas) flowInCanvas.style.display = 'none';
