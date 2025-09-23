@@ -322,6 +322,35 @@
       const canvasEl = element.querySelector('.csc-canvas');
       if (wrapper) wrapper.style.top = '35vh';
       if (canvasEl) canvasEl.style.height = '65vh';
+      // Fit titles to available overlay height
+      fitTitles();
+    });
+
+    // Utilities: scale title blocks so they fit within the overlay height
+    function fitTitleSection(section) {
+      if (!section) return;
+      const body = section.querySelector('.hero-body');
+      const content = section.querySelector('.has-text-centered');
+      if (!body || !content) return;
+      content.style.transform = '';
+      content.style.transformOrigin = 'bottom center';
+      const available = body.clientHeight;
+      const needed = content.scrollHeight;
+      if (available > 0 && needed > 0) {
+        const scale = Math.min(1, available / needed);
+        content.style.transform = `scale(${scale})`;
+      }
+    }
+
+    function fitTitles() {
+      const overlayTitle = document.querySelector('.overlay-title');
+      const inCanvasTitle = document.querySelector('.flow-title-in-canvas');
+      fitTitleSection(overlayTitle);
+      fitTitleSection(inCanvasTitle);
+    }
+
+    window.addEventListener('resize', () => {
+      fitTitles();
     });
 
     // Swap to in-canvas title at end (no fade on the first title)
@@ -347,9 +376,13 @@
           } else if (flowInCanvas && wrapper) {
             flowInCanvas.style.display = 'flex';
           }
+          // Re-fit after inserting into wrapper
+          fitTitleSection(flowInCanvas);
         }
       } else {
         if (flowInCanvas) flowInCanvas.style.display = 'none';
+        // Ensure overlay title remains fitted during scroll
+        fitTitleSection(overlay);
       }
     });
   </script>
