@@ -316,13 +316,26 @@
 
     const csc = new CanvasScrollClip(element, options);
 
-    // After images load, enforce 65vh canvas height and sticky below 35vh overlay
-    csc.events.on('images.loaded', () => {
+    // Adjust canvas layout based on screen size
+    function adjustCanvasLayout() {
       const wrapper = element.querySelector('.csc');
       const canvasEl = element.querySelector('.csc-canvas');
-      if (wrapper) wrapper.style.top = '35vh';
-      if (canvasEl) canvasEl.style.height = '65vh';
-      // Fit titles to available overlay height
+      const isNarrow = window.innerWidth <= 600;
+      if (!wrapper || !canvasEl) return;
+      if (isNarrow) {
+        // Let CSS control mobile layout
+        wrapper.style.top = '';
+        canvasEl.style.height = '';
+      } else {
+        // Desktop defaults
+        wrapper.style.top = '35vh';
+        canvasEl.style.height = '65vh';
+      }
+    }
+
+    // After images load, set layout and fit titles
+    csc.events.on('images.loaded', () => {
+      adjustCanvasLayout();
       fitTitles();
     });
 
@@ -362,6 +375,7 @@
     }
 
     window.addEventListener('resize', () => {
+      adjustCanvasLayout();
       fitTitles();
     });
 
