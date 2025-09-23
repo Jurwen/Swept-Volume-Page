@@ -180,16 +180,16 @@ body {
 /* Small-screen adjustments */
 @media (max-width: 600px) {
   /* Tighter typography for small screens */
-  .title.is-1.publication-title { font-size: clamp(1.6rem, 8.5vw, 2.3rem); line-height: 1.1; }
-  .publication-title { font-size: clamp(1.1rem, 6vw, 1.35rem); line-height: 1.15; }
-  .publication-authors { font-size: clamp(0.85rem, 3.5vw, 0.95rem); line-height: 1.25; }
-  .publication-venue { font-size: clamp(0.85rem, 3.5vw, 0.95rem); }
+  .title.is-1.publication-title { font-size: clamp(1.3rem, 7.2vw, 1.9rem); line-height: 1.1; }
+  .publication-title { font-size: clamp(1rem, 5.2vw, 1.2rem); line-height: 1.15; }
+  .publication-authors { font-size: clamp(0.8rem, 3.2vw, 0.9rem); line-height: 1.25; }
+  .publication-venue { font-size: clamp(0.8rem, 3.2vw, 0.9rem); }
   .publication-links .button { width: 100%; }
   .author-block { margin-left: 8px; margin-right: 8px; display: inline; }
 
   /* Make overlay/canvas split less tall to fit small screens */
   .overlay-title { height: 28svh; height: 28dvh; }
-  .csc { top: 28svh; top: 28dvh; height: 72svh; height: 72dvh; width: 100%; }
+  .csc { top: 28svh; top: 28dvh; height: auto; width: 100%; }
   .flow-title-in-canvas { top: -30svh; top: -30dvh; height: auto; }
 
   /* Teaser full-width and centered */
@@ -200,6 +200,9 @@ body {
   .results-carousel .item { margin-left: 0; margin-right: 0; padding: 10px; }
   .results-carousel .item img { height: 45svh; height: 45dvh; }
   .results-carousel .item h2 { font-size: 0.95rem; line-height: 1.3; padding: 0 12px; }
+
+  /* Make scroll canvas match teaser style on phones */
+  .csc-canvas { width: 100%; height: 35vw !important; }
 }
 
 /* Extra narrow phones */
