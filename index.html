@@ -394,6 +394,9 @@
       const done = progress >= 1;
       if (done) {
         overlay.style.display = 'none';
+        overlay.style.pointerEvents = 'none';
+        overlay.style.visibility = 'hidden';
+        overlay.style.zIndex = '-1';
         if (flowInCanvas && element.firstElementChild) {
           const wrapper = element.querySelector('.csc');
           if (wrapper && !wrapper.contains(flowInCanvas)) {
@@ -402,11 +405,15 @@
           } else if (flowInCanvas && wrapper) {
             flowInCanvas.style.display = 'flex';
           }
-          // Re-fit after inserting into wrapper
+          // Re-fit after inserting
           fitTitleSection(flowInCanvas);
         }
       } else {
         if (flowInCanvas) flowInCanvas.style.display = 'none';
+        // Restore overlay stacking when not finished
+        overlay.style.visibility = '';
+        overlay.style.pointerEvents = '';
+        overlay.style.zIndex = '';
         // Ensure overlay title remains fitted during scroll
         fitTitleSection(overlay);
       }
