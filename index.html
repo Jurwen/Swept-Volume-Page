@@ -345,6 +345,18 @@
     function fitTitles() {
       const overlayTitle = document.querySelector('.overlay-title');
       const inCanvasTitle = document.querySelector('.flow-title-in-canvas');
+      const isNarrow = window.innerWidth <= 600;
+      if (isNarrow) {
+        // Remove any previous scaling so CSS sizes apply on small screens
+        const reset = (section) => {
+          if (!section) return;
+          const content = section.querySelector('.has-text-centered');
+          if (content) content.style.transform = '';
+        };
+        reset(overlayTitle);
+        reset(inCanvasTitle);
+        return;
+      }
       fitTitleSection(overlayTitle);
       fitTitleSection(inCanvasTitle);
     }
